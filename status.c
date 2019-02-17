@@ -163,6 +163,14 @@ int main(){
     printf("\"Git\":\"%s\",",st10);
   }
 
+    st = "";
+  st = f_command("mysql -V",1);
+  f_trim2(st,st10);
+  if (strstr(st10,"not found" ) == NULL) {
+    f_removeSubstring(st10,"git ");
+    printf("\"Mysql\":\"%s\",",st10);
+  }
+  
   st = "";
   st = f_command("docker -v",1);
 //  printf("%s",st);
@@ -209,7 +217,7 @@ int main(){
 //  printf("\"Docker\":\"%s\",",st);
   
 
-  st = "Rev 1.6";
+  st = "Rev 1.7";
   printf("\"Status\":\"%s\"",st);
 
   printf("}}");
