@@ -1,4 +1,9 @@
 // Copy line ALT-6 // Paste line CTRL-U
+// Install PIP: sudo apt-get install python3-pip
+
+// Compile
+// gcc -o -status status.c
+// sudo chmod u+x status
 
 
 #include <stdio.h>
@@ -129,10 +134,15 @@ int main(){
   f_trim2(st,st10);
   printf("\"Php\":\"%s\",",st10);
 
+  st = f_command("mysql -V",1);
+  f_trim2(st,st10);
+  printf("\"Mysql\":\"%s\",",st10);
+
+
   st = "";
   st = f_command("lsb_release -a",2);
   f_trim2(st,st10);
-  f_removeSubstring(st10,"Distribution:");
+  f_removeSubstring(st10,"Description:");
   printf("\"OperatingSystem\":\"%s\",",st10);
 
 //  st = f_command("lsb_release -a",4);
@@ -163,14 +173,23 @@ int main(){
     printf("\"Git\":\"%s\",",st10);
   }
 
-    st = "";
-  st = f_command("mysql -V",1);
+  st = "";
+  st = f_command("pip3 -V",1);
   f_trim2(st,st10);
   if (strstr(st10,"not found" ) == NULL) {
-    f_removeSubstring(st10,"git ");
-    printf("\"Mysql\":\"%s\",",st10);
+    f_removeSubstring(st10,"pip ");
+    printf("\"Pip3\":\"%s\",",st10);
   }
-  
+
+  st = "";
+  st = f_command("python3 -V",1);
+  f_trim2(st,st10);
+  if (strstr(st10,"not found" ) == NULL) {
+    f_removeSubstring(st10,"Python ");
+    printf("\"Python\":\"%s\",",st10);
+  }
+
+
   st = "";
   st = f_command("docker -v",1);
 //  printf("%s",st);
@@ -217,7 +236,7 @@ int main(){
 //  printf("\"Docker\":\"%s\",",st);
   
 
-  st = "Rev 1.7";
+  st = "Rev 1.9";
   printf("\"Status\":\"%s\"",st);
 
   printf("}}");
