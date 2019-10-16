@@ -136,8 +136,9 @@ int main(){
 
   st = f_command("mysql -V",1);
   f_trim2(st,st10);
-  printf("\"Mysql\":\"%s\",",st10);
-
+  if (strstr(st10,"not found" ) == NULL){
+    printf("\"Mysql\":\"%s\",",st10);
+  }
 
   st = "";
   st = f_command("lsb_release -a",2);
