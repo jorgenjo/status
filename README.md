@@ -7,10 +7,12 @@ each installed application has
 
 Command: 
 
+```bash
 ./status
 
 Result: 
 
+```python
 sh: 1: mysql: not found
 No LSB modules are available.
 sh: 1: npm: not found
