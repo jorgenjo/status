@@ -4,7 +4,7 @@ This program is used on my raspberry pi installation, and used to see what versi
 each installed application has
 
 # Clone
-clone
+git clone https://github.com/jorgenjo/status.git
 
 # Example
 
