@@ -182,6 +182,7 @@ int main(){
     printf("\"Pip3\":\"%s\",",st10);
   }
 
+
   st = "";
   st = f_command("python3 -V",1);
   f_trim2(st,st10);
@@ -189,6 +190,16 @@ int main(){
     f_removeSubstring(st10,"Python ");
     printf("\"Python\":\"%s\",",st10);
   }
+
+  st = "";
+  st = f_command("homebridge -V",1);
+  f_trim2(st,st10);
+  if (strstr(st10,"not found" ) == NULL) {
+    f_removeSubstring(st10,"Homebridge ");
+    printf("\"Homebridge\":\"%s\",",st10);
+  }
+
+
 
 
   st = "";
@@ -237,7 +248,7 @@ int main(){
 //  printf("\"Docker\":\"%s\",",st);
   
 
-  st = "Rev 1.9";
+  st = "Rev 1.10";
   printf("\"Status\":\"%s\"",st);
 
   printf("}}");
