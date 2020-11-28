@@ -257,11 +257,12 @@ int main(){
         j++;
       }
     }
-    st16[j] = ' ';
+    st16[j] = '\0'; // End of char;
+
     f_removeSubstring(st16,"Mem:");
-    f_removeSubstring(st16," ");
-    st10[0] = 0;
+//    f_removeSubstring(st16," ");
     printf("\"Mem\":\"%s\",",st16);
+//    printf("\"Mem\":\"%s\",",st10);
   }
 
 
