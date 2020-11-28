@@ -242,13 +242,36 @@ int main(){
   f_trim2(st,st10);
   printf("\"DiskSize\":\"%s\",",st10);
 
+
+
+  st = "";
+  st = f_command("free -h",2);
+  f_trim2(st,st10);
+  if (strstr(st10,"not found" ) == NULL) {
+    char st16[22];
+    int i;
+    int j = 0;
+    for(i=0;i<22;i++){
+      if ( (st10[i] > 32) && (st10[i]<127)){
+        st16[j] = st10[i];
+        j++;
+      }
+    }
+    st16[j] = ' ';
+    f_removeSubstring(st16,"Mem:");
+    f_removeSubstring(st16," ");
+    st10[0] = 0;
+    printf("\"Mem\":\"%s\",",st16);
+  }
+
+
 //  st = "";
 //  st = f_command("docker -v",1);
 //  f_trim2(st,st10);
 //  printf("\"Docker\":\"%s\",",st);
   
 
-  st = "Rev 1.10";
+  st = "Rev 1.11";
   printf("\"Status\":\"%s\"",st);
 
   printf("}}");
